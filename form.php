@@ -23,11 +23,15 @@ die("Phone must be 10 digits!");
     $sql = "INSERT INTO entries (name, email, phone) VALUES ('$name','$email','$phone')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<p>Entry added successfully!</p>";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
 
+    header("Location: view.php?success=1");
+    exit();
+
+} else {
+
+    echo "Error: " . $sql . "<br>" . $conn->error;
+
+}
     $conn->close();
 }
 
